@@ -1,5 +1,7 @@
 # Weather Tracking
 
+This app provides you with a wealth of meteorological data such as temperature, wind and visibility on daily basis. It allow us to search weather on location basis and see the temperature in kelvin or celsis.
+
 ![Screenshot of Weather Tracking login](/src/assets/images/screen1.png)
 ![Screenshot of Weather Tracking search location](/src/assets/images/screen2.png)
 ![Screenshot of Weather Tracking](/src/assets/images/screen3.png)
