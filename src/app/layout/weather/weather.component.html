@@ -26,9 +26,9 @@
           width="50"
           height="50"
         />{{ currentTemp }}
-        <sup>
-          <span aria-label="°Celsius" (click)="temperatureConverter()" >°C</span> |
-          <span aria-label="°Fahrenheit" (click)="temperatureConverter('fer')" >°F</span></sup
+        <sup class='text-muted'>
+          <span aria-label="°Celsius" (click)="temperatureConverter(); activeItem = 'cel'" [ngClass]="{'text-active':activeItem === 'cel' , 'text-pointer':activeItem === 'fer'}" >°C</span> |
+          <span aria-label="°Fahrenheit" (click)="temperatureConverter('fer'); activeItem = 'fer'" [ngClass]="{'text-active':activeItem === 'fer', 'text-pointer':activeItem === 'cel'}" >°F</span></sup
         >
       </h3>
       <h6>RIGHT NOW</h6>
