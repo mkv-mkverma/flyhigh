@@ -21,6 +21,7 @@ export class WeatherComponent implements OnInit {
   currentDate = new Date();
   currentTemp: any;
   showClass = true;
+  activeItem = 'cel';
   constructor(private weatherService: WeatherService, private router: Router) {}
 
   ngOnInit() {
