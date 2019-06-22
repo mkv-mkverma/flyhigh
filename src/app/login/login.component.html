@@ -1,0 +1,27 @@
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+      <!-- Tabs Titles -->
+  
+      <!-- Icon -->
+      <div class="fadeIn first">
+        <img src="https://freepngimg.com/thumb/weather/23529-2-weather-hd-thumb.png" id="icon" alt="User Icon" />
+        <h1>Weather Application</h1>
+      </div>
+  
+      <!-- Login Form -->
+      <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+        <input type="email" id="email" class="fadeIn second" name="email" placeholder="username" formControlName="email" required>
+        <input type="password" id="password" class="fadeIn third" name="password" placeholder="password" formControlName="password">
+        <input type="submit" class="fadeIn fourth" value="Log In" [disabled]="!profileForm.valid" >
+      </form>
+      <p>
+          email: 'eve.holt@reqres.in',
+          password: 'cityslicka'
+        </p>
+      <!-- Remind Passowrd -->
+      <div id="formFooter">
+        <a class="underlineHover" href="https://github.com/mkv-mkverma" target="_blank">Go to the Site</a>
+      </div>
+  
+    </div>
+  </div>

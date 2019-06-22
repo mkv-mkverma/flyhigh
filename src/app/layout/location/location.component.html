@@ -1,0 +1,29 @@
+<div class="container">
+    <div style="margin-top:70px">
+        <div class="row">
+          <div class="col-sm-2 col-md-2">
+          </div>
+          <div class="col-sm-8 col-md-8">
+            <h1 class="text-center text-muted">Search Location</h1>
+            <div class="form-group">
+              <input placeholder="Enter pincode, address, city" autocorrect="off" autocapitalize="off" spellcheck="off"
+                type="text" class="form-control" #addressSearch (keyup.enter)="onEnterLocation(addressSearch.value)">
+                <a (click)='setCurrentPosition()' title="Find your current location"><i class="fa fa-map-marker"></i> current location</a>
+            </div>
+          </div>
+          <div class="col-sm-2 col-md-2">
+          </div>
+        </div>
+          <div class="row" *ngIf="isSearchFound">
+            <div class="col-sm-2 col-md-2">
+            </div>
+            <div class="col-sm-8 col-md-8">
+                <img src="https://www.nestaway.com/assets/icon/no-search-result-icn-990681e9e3e0f577f40b7c0bceb45d26.png" class="mx-auto d-block">
+                <br/>
+              <h4 class="text-center text-muted">Zero results. Kindly search another locations.</h4>
+            </div>
+            <div class="col-sm-2 col-md-2">
+            </div>
+        </div>
+      </div>
+</div>

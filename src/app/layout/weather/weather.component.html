@@ -1,0 +1,80 @@
+<div class="container">
+  <div class="row" style="margin-top:70px">
+    <div class="col-sm-12 col-md-12">
+      <h1 class=" text-muted text-left">
+        <i class="fa fa-map-marker"></i> {{ city }}
+      </h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <p id="geoData">
+        <span>{{ address }}, {{ city }}, {{ state }}</span>
+      </p>
+      <p>
+        {{ currentDate | date: "medium" }}
+      </p>
+      <p>
+        {{ (weatherDetails?.weather)[0].description }}
+      </p>
+      <h3>
+        <img
+          src="https://openweathermap.org/img/w/{{
+            (weatherDetails?.weather)[0].icon
+          }}.png"
+          alt="Weather Buckingham , US"
+          width="50"
+          height="50"
+        />{{ currentTemp }}
+        <sup>
+          <span aria-label="°Celsius" (click)="temperatureConverter()" >°C</span> |
+          <span aria-label="°Fahrenheit" (click)="temperatureConverter('fer')" >°F</span></sup
+        >
+      </h3>
+      <h6>RIGHT NOW</h6>
+      <ul id="geoData">
+        <li>
+          Wind: <span>{{ weatherDetails?.wind.speed }} m/sec</span>
+        </li>
+        <li>
+          Humidity: <span>{{ weatherDetails?.main.humidity }} %</span>
+        </li>
+        <li>
+          Pressure: <span>{{ weatherDetails?.main.pressure }} hpa</span>
+        </li>
+        <li>
+          Visibility: <span>{{ weatherDetails?.visibility }} meter</span>
+        </li>
+      </ul>
+    </div>
+    <div class="col-xs-12 col-sm-8 col-md-8">
+      <agm-map
+        [latitude]="lat"
+        [longitude]="lng"
+        [mapTypeControl]="true"
+        [scrollwheel]="true"
+        [zoom]="zoom"
+        [fullscreenControl]="true"
+      >
+        <agm-marker [latitude]="lat" [longitude]="lng"
+          ><agm-info-window>
+            <strong>{{ fullAddress }}</strong>
+          </agm-info-window></agm-marker
+        >
+        <agm-circle
+          [latitude]="lat"
+          [longitude]="lng"
+          [radius]="10"
+          [fillOpacity]="0.3"
+          [fillColor]="'#007bff'"
+        ></agm-circle>
+      </agm-map>
+      <a [routerLink]="['/location']" class="text-center"
+        >Enter another location</a
+      >
+      <br /><br />
+      <br /><br />
+      <br /><br />
+    </div>
+  </div>
+</div>
