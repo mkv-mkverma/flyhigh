@@ -11,6 +11,7 @@ import {
 
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
+import { environment } from '../../../environments/environment'
 
 @Injectable()
 export class HttpConfigInterceptor implements HttpInterceptor {
@@ -19,6 +20,8 @@ export class HttpConfigInterceptor implements HttpInterceptor {
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
+    // request = request.clone({ url: `${ BASE_PATH }${ request.url }` });
+      // return next.handle(proxyReq);
     const token: string = localStorage.getItem('token');
     // const token = 'QpwL5tke4Pnpja7X4';
     // const token = 'QpwL5tke4Pnsdfsds55pja7X4'; // invalid token
@@ -31,14 +34,23 @@ export class HttpConfigInterceptor implements HttpInterceptor {
       });
     }
 
+    if(request.url.startsWith('/data')){
+      const url = environment.apiUrl;
+      request = request.clone({
+             url: url + request.url,
+      });
+   }
+
     if (!request.headers.has('Content-Type')) {
       request = request.clone({
         headers: request.headers.set('Content-Type', 'application/json')
       });
     }
+
     request = request.clone({
       headers: request.headers.set('Accept', 'application/json')
     });
+
 // This only handle the API response.
 // we can handle each and every response from the API
 // Calling next.handle means that we are passing control to the next interceptor in the chain, if there is one.
@@ -57,7 +69,7 @@ export class HttpConfigInterceptor implements HttpInterceptor {
           reason: error && error.error ? error.error.error : '',
           status: error.status
         };
-        alert(data);
+        alert("Reason: "+ data['reason'] +" | Status: "+ data['status']);
         return throwError(error);
       })
     );

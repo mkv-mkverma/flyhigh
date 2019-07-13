@@ -9,6 +9,7 @@ import { ResetpasswordComponent } from './resetpassword/resetpassword.component'
 import { DashboardComponent } from './layout/dashboard/dashboard.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpConfigInterceptor } from './utils/core/httpconfig.interceptor';
+import { environment } from '../environments/environment';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,8 +19,7 @@ import { HttpConfigInterceptor } from './utils/core/httpconfig.interceptor';
   ],
   imports: [
     AgmCoreModule.forRoot({
-      // uncomment below code after generating google API key and replace 'YOUR_KEY' with actual key
-      apiKey: 'AIzaSyDGeFJ6LdIE8jTJRgymfzP7HcL3Ll2CYfw',
+      apiKey: environment.googleLocationAPIKey,
       libraries: ['places']
     }),
     BrowserModule,
