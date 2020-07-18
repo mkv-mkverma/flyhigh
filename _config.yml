@@ -2,7 +2,7 @@ title: Flyhigh
 description: " This app provides you with a wealth of meteorological data such as temperature, wind and visibility on daily basis. It allow us to search weather on location basis and see the temperature in kelvin or celsis."
 google_analytics: 
 show_downloads: true
-theme: jekyll-theme-minimal
+theme: jekyll-theme-hacker
 
 gems:
   - jekyll-mentions
